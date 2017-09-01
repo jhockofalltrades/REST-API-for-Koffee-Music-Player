@@ -2,8 +2,8 @@
 A REST API prototype for Koffee Music Player. [See original App](https://github.com/1jhock/Koffee-A-Web-based-Personal-Music-Player) 
 
 ## Add-ons 
-Postman Chrome extensions
-Enable API key - locate `dir/config/rest.php`
+Download Postman Chrome extensions for easier HTTP requests.  
+Enable API key - locate `dir/config/rest.php`   
 Enable IP whitelisting - locate `dir/config/rest.php`
 
 ## Operations
@@ -40,3 +40,7 @@ Enable IP whitelisting - locate `dir/config/rest.php`
 | ` *base_url*/user_data/*mood*/*username* `		  | ` *both string* `     | **mood + username** - moods are pre-defined and must exist.
 | ` *base_url*/song/*song_id* `						  | ` *integer* `         | **song_id** - must be existing song id.
 | ` *base_url*/add_interactions/ `					  | ` key_val http body ` | Must be `x-www-form-urlencoded`
+     
+
+## Libarary
+Thanks to [codeigniter-restserver](https://github.com/chriskacerguis/codeigniter-restserver) for making it easier.
