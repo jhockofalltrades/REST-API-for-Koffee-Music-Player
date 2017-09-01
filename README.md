@@ -1,8 +1,11 @@
 # REST-API-for-Koffee-Music-Player
-A REST API prototype for Koffee Music Player
+A REST API prototype for Koffee Music Player. [See original App](https://github.com/1jhock/Koffee-A-Web-based-Personal-Music-Player) 
+
+## Add-ons 
+Postman Chrome extensions
 
 ## Operations
-+ GET
++ GET   
 **User information**   
 
 **Information by artist**   
@@ -17,12 +20,11 @@ A REST API prototype for Koffee Music Player
 
 **All Data**   
 
-
-+ DELETE
++ DELETE   
 **Delete a song**   
 
-
-+ PUT 
+   
++ PUT    
 **Add new airplay**   
 
 ## Methods
