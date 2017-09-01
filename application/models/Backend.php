@@ -3,6 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 Class Backend extends CI_Model {
+
+	function new_airplay($data) {
+		return $this->db->insert('interactions',$data);
+	}
+
+	function delete_song($id) {
+		$this->db->where(['song_id' => $id]);
+		return $this->db->delete('songs');
+	}
 	
 	function get_by_table($table) {
 		$this->db->select()->from($table);
@@ -111,6 +120,18 @@ Class Backend extends CI_Model {
 		$this->db->group_by('songs.song_id');
 		$songs = $this->db->get();
 		return $songs->result();
+	}
+
+	function check_id($table, $id_field, $id_val) {
+		$this->db->select($id_field)->from($table);
+		$this->db->where([$id_field => $id_val]);
+		$result = $this->db->get();
+		
+		if($result->first_row()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 

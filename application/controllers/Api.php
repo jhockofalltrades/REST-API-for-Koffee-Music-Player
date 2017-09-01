@@ -60,6 +60,65 @@ Class Api extends REST_Controller {
 		$this->response($data);
 	}
 
+
+	function song_delete($song_id) {
+		if($this->backend->check_id('songs','song_id', $song_id)) {
+			$deleted = $this->backend->delete_song($song_id);
+
+			if($deleted) {
+				$this->response(["status" => "success", "message" => "The song has been deleted"]);
+			} else {
+				$this->response(["status" => "error", "message" => "The song has not been deleted"]);
+			}
+		} else {
+			$this->response(["status" => "error", "message" => "Song ID doesn't exist"]);
+		}
+	}	
+
+	/*ADD NEW SONG AIRPLAY*/
+	function add_interactions_post() {
+
+		$this->form_validation->set_data($this->put());
+
+		$this->form_validation->set_rules('user_id','USER ID','numeric|required|callback_check_user_id');
+		$this->form_validation->set_rules('song_id', 'SONG ID','numeric|required|callback_check_song_id');
+		$this->form_validation->set_rules('mood','Mood','required');
+
+		
+		if($this->form_validation->run() != false) {
+			$new = $this->backend->new_airplay($this->put());
+
+			if($new) {
+				$this->response(["status" => "success", "message" => "New airplay is added"]);
+			} else {
+				$this->response(["status" => "error", "message" => $this->form_validation->error_array()]);
+			}
+
+		} else {	
+			$this->response(["status" => "error", "message" => $this->form_validation->error_array()]);
+		}
+	}
+
+	/**VALIDATIONS**/
+	private function check_user_id($id) {
+		if($this->backend->check_id('user','user_id', $id)) {
+			return true;
+		} else {
+			$errors[] = $this->form_validation->set_message('check_user_id', 'The {field} user ID do not exist');
+			return false;
+		}
+	}
+
+	private function check_song_id($id) {
+		if($this->backend->check_id('songs','song_id', $id)) {
+			return true;
+		} else {
+			$errors[] = $this->form_validation->set_message('check_song_id', 'The {field} song ID do not exist');
+			return false;
+		}
+	}
+
+
 }
 
 ?>
