@@ -3,9 +3,11 @@ A REST API prototype for Koffee Music Player. [See original App](https://github.
 
 ## Add-ons 
 Postman Chrome extensions
+Enable API key - locate `dir/config/rest.php`
+Enable IP whitelisting - locate `dir/config/rest.php`
 
 ## Operations
-+ GET   
+### GET
 **User information**   
 
 **Information by artist**   
@@ -19,12 +21,11 @@ Postman Chrome extensions
 **Weekly trend of interactions**   
 
 **All Data**   
-
-+ DELETE   
+### DELETE
 **Delete a song**   
 
    
-+ PUT    
+### PUT   
 **Add new airplay**   
 
 ## Methods
